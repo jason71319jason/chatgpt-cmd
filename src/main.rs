@@ -105,12 +105,12 @@ where
     Ok(())
 }
 
-fn load_json<T>(json_path: &PathBuf) -> Result<T, Box<dyn std::error::Error>> 
+fn load_json<T>(json_path: &PathBuf) -> Result<T, Box<dyn std::error::Error>>
 where
     for<'de> T: Deserialize<'de>,
 {
     let file = File::open(json_path)?;
-    Ok(serde_json::from_reader(file)?) 
+    Ok(serde_json::from_reader(file)?)
 }
 
 fn update_json<T>(path: &PathBuf, json: T) -> Result<(), Box<dyn std::error::Error>>
@@ -124,7 +124,6 @@ where
 }
 
 async fn chat(config: &Config, messages: &Vec<Message>) -> Result<Message, Box<dyn std::error::Error>> {
-    //"Bearer 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"
     // set up request payload
     let request = Request {
         model: config.model.clone(),
